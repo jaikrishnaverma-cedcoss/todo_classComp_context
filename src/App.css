@@ -187,3 +187,6 @@ ul li.editMode input[type=text] {
 ul li.editMode label {
     display: none;
 }
+.container--dark ul li button,.container--dark form button{
+color: white;
+}
