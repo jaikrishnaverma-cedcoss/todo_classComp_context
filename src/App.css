@@ -84,8 +84,7 @@ button:hover {
 
 .btntoggle:hover {
     color: white;
-    background-color: rgb(99, 44, 151);
-    ;
+    background-color: rgba(16, 31, 51, 0.658);
 }
 
 /* Heading */

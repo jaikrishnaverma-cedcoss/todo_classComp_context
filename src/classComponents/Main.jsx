@@ -61,7 +61,7 @@ export class Main extends Component {
               className={`btntoggle ${state.darkMode ? "btn--dark" : ""}`}
               onClick={darkToggle}
             >
-              Dark Mode
+              {state.darkMode ?"Light":"Dark"} Mode
             </button>
             <h2>TODO LIST</h2>
             <h3>Add Item</h3>
