@@ -6,20 +6,27 @@ const initialState = {
   todos: [],
   index: -1,
   btnVal: "ADD",
-  loading:true,
-  darkMode:false
+  loading: true,
+  darkMode: false,
 };
 function App() {
   const [state, setState] = useState(initialState);
   const addAction = (action) => {
-    state.todos.push(action);
-    state.Sno = state.Sno + 1;
+    state.loading = true;
     setState({ ...state });
+    setTimeout(() => {
+      state.todos.push(action);
+      state.Sno = state.Sno + 1;
+      state.loading = false;
+      setState({ ...state });
+    }, 600);
   };
   const addtodoArr = (action) => {
-    state.todos=action.map(x=>{return {text:x.todo,status:x.completed?"Complete":"Incomplete"}})
-    state.Sno = state.Sno + 1;
-    state.loading=false
+    state.todos = action.map((x) => {
+      state.Sno = state.Sno + 1;
+      return { text: x.todo, status: x.completed ? "Complete" : "Incomplete" };
+    });
+    state.loading = false;
     setState({ ...state });
   };
   const updateAction = (action) => {
@@ -41,14 +48,25 @@ function App() {
     state.todos[action.index].status = action.status;
     setState({ ...state });
   };
-  const darkToggle=()=>{
-  state.darkMode=!state.darkMode
-  setState({ ...state });
-  }
-  console.log(state)
+  const darkToggle = () => {
+    state.darkMode = !state.darkMode;
+    setState({ ...state });
+  };
   return (
     <>
-      <MyContext.Provider value={{ state, setState, addAction ,updateAction,deleteAction,editMode,cheker ,addtodoArr, darkToggle}}>
+      <MyContext.Provider
+        value={{
+          state,
+          setState,
+          addAction,
+          updateAction,
+          deleteAction,
+          editMode,
+          cheker,
+          addtodoArr,
+          darkToggle,
+        }}
+      >
         <Main />
       </MyContext.Provider>
     </>
